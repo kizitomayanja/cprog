@@ -154,7 +154,7 @@ int main()
     }*/
     view:
     {
-        printf("Viewing menu:\n 1.View all records\n 2.View one record");
+        printf("Viewing menu:\n\t\t1.View all records\n\t\t2.View one record");
         int testid;
         scanf("%d", &testid);
         switch(testid)
