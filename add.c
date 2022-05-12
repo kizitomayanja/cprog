@@ -41,13 +41,17 @@ int main()
         emp[i].personID = 0;
     }
     FILE*ptr;
+    if(ptr==NULL)
+    {
+        goto beginning;
+    }
     ptr=fopen("adding.dat","r");
     fread(&emp,sizeof(struct employee),40,ptr);
     fclose(ptr);
 
     int n;beginning:
     //system("cls");
- printf("SOROTI PENTACOSTAL CHURCH MINISTRY:\n1 client information\n2 payments & bills\n3 beneficiary claims\n4 staff salaries\n0 exit.\n");
+ printf("\t\tSOROTI PENTACOSTAL CHURCH MINISTRY:\n\t\t1. Church information\n\t\t2. Payments & Bills\n\t\t3. Beneficiary claims\n\t\t4. Staff salaries\n\t\t0. exit.\n");
   scanf("%d",&n);
   switch(n)
   {
@@ -55,7 +59,7 @@ int main()
   case 1:
       system("CLS");
       int go;
-      printf("Do you want to... \n 1. Add a new member of the congregation? \n2. View one of the member records\n 3. Delete a member record?\n4. To go back to the main menu?");
+      printf("Do you want to... \n\t\t1. Add a new member of the congregation? \n\t\t2. View one of the member records\n\t\t3. Delete a member record?\n\t\t4. To go back to the main menu?");
       scanf("%d", &go);
       if(go==1){goto add;}
       else if(go==2){system("CLS");goto view;}
@@ -72,7 +76,7 @@ int main()
    case 4:
 
    case 0:
-       exit(1);
+       exit(0);
        default:
     printf("you have entered invalid option:");
 
@@ -97,18 +101,18 @@ int main()
     printf("Enter your second name: ");
     scanf("%s", emp[i].name.secondName);
     emp[i].personID=2101000+i+1;
-    printf("Your Id is %d\n", emp[i].personID);
-    printf("Enter your age");
+    printf("Your Id is %d.\n", emp[i].personID);
+    printf("Enter your age: ");
     scanf("%d", &emp[i].age);
-    printf("Enter your address");
+    printf("Enter your address: ");
     scanf("%s", emp[i].address);
-    printf("What role are you given in the church");
+    printf("What role are you given in the church? ");
     scanf("%s", emp[i].role);
-    printf("Are you Male or Female?");
+    printf("Are you Male or Female? ");
     scanf("%s", emp[i].gender);
     printf("What is your marital status? ");
     scanf("%s", emp[i].marital);
-    printf("Enter your email");
+    printf("Enter your email: ");
     scanf("%s", emp[i].email);
     printf("Enter your telephone number: ");
     scanf("%s", emp[i].tel);
@@ -172,24 +176,24 @@ int main()
             {
                 continue;
             }
-            printf("personID: %d\n Name: %s %s \n Role: %s\n Age: %d\nGender: %s\nMarital: %s \nAddress: %s\nTelephone Number: %d\nEmail: %s\nSalary: ",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
-            goto start;
-        }
+            printf("\t\tPerson's ID: %d\n\t\tName: %s %s \n\t\tRole: %s\n\t\tAge: %d\n\t\tGender: %s\n\t\tMarital: %s \n\t\tAddress: %s\n\t\tTelephone Number: %d\n\t\tEmail: %s\n\t\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
+
+        }goto start;
         part2:
-        printf("Enter the Id of the person you want to view");
+        printf("Enter the Id of the person you want to view: ");
         scanf("%d", &testid);
         for(int i=0; i<80;i++)
         {
             if(testid == emp[i].personID)
             {
                 system("cls");
-                printf("person's ID: %d\n Name: %s %s \n Role: %s\n Age: %d\nGender: %s\nMarital: %s \nAddress: %s\nTelephone Number: %d\nEmail: %s\nSalary: ",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
+                printf("\t\tPerson's ID: %d\n\t\tName: %s %s \n\t\tRole: %s\n\t\tAge: %d\n\t\tGender: %s\n\t\tMarital: %s \n\t\tAddress: %s\n\t\tTelephone Number: %d\n\t\tEmail: %s\n\t\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
                 break;
             }
-            else
+            else if(emp[i].personID==0)
             {
                 system("cls");
-                printf("invalid ID:enter the correct ID..\n");
+                printf("ID does not exist!!! Try again incase there was a typo.\n");
                 goto part2;
                 break;
             }
