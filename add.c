@@ -59,13 +59,14 @@ int main()
   case 1:
       system("CLS");
       int go;
-      printf("Do you want to... \n\t\t1. Add a new member? \n\t\t2. View a member's/members' records\n\t\t3. Delete a member?\n\t\t4. Go back to the main menu?");
+      printf("Do you want to... \n\t\t1. Add a new member? \n\t\t2. View a member's/members' records\n\t\t3. Delete a member?\n\t\t4. Go back to the main menu?\n\t\t5. Modify a member's record?");
       scanf("%d", &go);
       if(go==1){goto add;}
       else if(go==2){system("CLS");goto view;}
       else if(go==3){goto del;}
         //goto del;
         else if(go==4){system("CLS");goto beginning;}
+        else if(go==5){system("cls");goto modify;}
         else{ system("CLS");goto add1;}
       break;
 
@@ -169,12 +170,14 @@ int main()
         {
             if(emp[i].personID==0)
             {
-                printf("That's all");
-                goto beginning;
+                printf("That's all\n\n");
+                goto start;
             }
             if (emp[i].personID!=0 && emp[i+1].personID==0)
             {
-
+                printf("\tPerson's ID: %d\n\tName: %s %s \n\t\tRole: %s\n\tAge: %d\n\tGender: %s\n\tMarital: %s \n\tAddress: %s\n\tTelephone Number: %d\n\tEmail: %s\n\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
+                printf("\n\n\t That's all\n\n");
+                goto start;
             }
             if(emp[i].personID==3000||emp[i+1].personID==3000)
             {
@@ -266,7 +269,40 @@ del:
     fl = fopen("adding.dat","w+");
     fwrite(&emp, sizeof(struct employee),40,fl);
     fclose(fl);
+    }
 
+modify:
+    {
+        printf("\tEnter the ID of the member you want to edit.\n\tPress 1 to return to main menu.");
+        int testid;
+        scanf("%d", &testid);
+        if(testid==1)
+        {
+            system("cls");
+            goto beginning;
+        }
+        for(int i=0;i<80;i++)
+        {
+            if(testid<2101000||testid>2101081)
+            {
+                system("cls");
+                printf("\tThis ID does not exist.\n\n");
+                goto modify;
+            }
+            if(testid==emp[i].personID)
+            {
+                break;
+            }
+            if(emp[i].personID==3000)
+            {
+                continue;
+            }
+        }
+        printf("What would you like to edit"
+               "\n\t1. Name"
+               "\n\t2. Age"
+               "\n\t3. Address"
+               "\n\t4. Telephone \n\t5. Email \n\t6. Role \n\t7. Marital Status \n\t8. Gender \n\t9. Entire record");
     }
 return 0;
 }
