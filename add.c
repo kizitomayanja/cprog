@@ -156,14 +156,7 @@ int main()
         goto repeat1;
     }
 
-/*switch(checker)
-    {
-    case 'y':
-        goto beginning;
-    case 'n':
-        printf("Pleasure seeing you!!!");
-        exit(1);
-    }*/
+
     view:
     {
         printf("Viewing menu:\n\t\t1.View all records\n\t\t2.View one record");
