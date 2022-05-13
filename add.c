@@ -192,9 +192,9 @@ int main()
                    "\n\tMarital: %s                  \tMarital: %s"
                    "\n\tAddress: %s                  \tAddress: %s"
                    "\n\tTelephone Number: %d         \tTelephone Number: %d"
-                   "\n\tEmail: %s                    \tEmail: %s"
+                   "\n\tEmail: %30s   Email: %s"
                    "\n\tSalary:                      \t\tSalary: \n\n",
-                   emp[i].personID,emp[i+1].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i+1].name.firstName,emp[i+1].name.secondName,emp[i].role,emp[i+1].role,emp[i].age,emp[i+1].age,emp[i].gender,emp[i+1].gender,emp[i].marital,emp[i+1].marital,emp[i].address,emp[i+1].address,emp[i].tel,emp[i+1].tel,emp[i+1].email,emp[i+1].email,emp[i].salary,emp[i+1].salary);
+                   emp[i].personID,emp[i+1].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i+1].name.firstName,emp[i+1].name.secondName,emp[i].role,emp[i+1].role,emp[i].age,emp[i+1].age,emp[i].gender,emp[i+1].gender,emp[i].marital,emp[i+1].marital,emp[i].address,emp[i+1].address,emp[i].tel,emp[i+1].tel,emp[i].email,emp[i+1].email,emp[i].salary,emp[i+1].salary);
 
 
 
@@ -281,7 +281,8 @@ modify:
             system("cls");
             goto beginning;
         }
-        for(int i=0;i<80;i++)
+        int i;
+        for(i=0;i<80;i++)
         {
             if(testid<2101000||testid>2101081)
             {
@@ -298,11 +299,98 @@ modify:
                 continue;
             }
         }
+        edit:
         printf("What would you like to edit"
                "\n\t1. Name"
                "\n\t2. Age"
                "\n\t3. Address"
-               "\n\t4. Telephone \n\t5. Email \n\t6. Role \n\t7. Marital Status \n\t8. Gender \n\t9. Entire record");
+               "\n\t4. Telephone number \n\t5. Email \n\t6. Role \n\t7. Marital Status \n\t8. Gender \n\t9. Entire record\n\t0. Go back to main menu");
+               int field;
+               scanf("%d",&field);
+               switch(field)
+               {
+               case 1:
+                printf("Enter First Name");
+                scanf("%s", emp[i].name.firstName);
+                printf("Enter Second Name");
+                scanf("%s", emp[i].name.secondName);
+                printf("\n\t%s %s edited successfully",emp[i].name.firstName,emp[i].name.secondName);
+                break;
+               case 2:
+                printf("Enter Correct Age");
+                scanf("%d", emp[i].age);
+                printf("\n\tAge %d edited successfully", emp[i].age);
+
+               case 3:
+                printf("Enter Correct Address");
+                gets(emp[i].address);
+                printf("\n\tAddress %s edited successfully", emp[i].address);
+
+               case 4:
+                printf("Enter Correct Telephone Number");
+                scanf("%s",emp[i].tel);
+                printf("\n\tTelephone number %s edited successfully", emp[i].tel);
+                break;
+
+               case 5:
+                printf("Enter Correct Email");
+                scanf("%s",emp[i].email);
+                printf("\n\tEmail %s edited successfully", emp[i].email);
+                break;
+
+               case 6:
+                printf("Enter Correct Marital Status");
+                scanf("%s",emp[i].marital);
+                printf("\n\tMarital status changed to %s successfully", emp[i].marital);
+                break;
+               case 7:
+                printf("Enter Correct Gender");
+                scanf("%s",emp[i].gender);
+                printf("\n\tAddress %s edited successfully", emp[i].gender);
+                break;
+               case 8:
+                printf("Enter Correct ");
+                scanf("%s",emp[i].gender);
+                printf("\n\tAddress %s edited successfully", emp[i].gender);
+                break;
+
+               case 9:
+                    printf("\tEnter your first Name: ");
+                    scanf("%s",emp[i].name.firstName);
+                    printf("\tEnter your second name: ");
+                    scanf("%s", emp[i].name.secondName);
+                    printf("\tYour Id is still %d.\n", emp[i].personID);
+                    printf("\tEnter your age: ");
+                    scanf("%d", &emp[i].age);
+                    printf("\tEnter your address: ");
+                    scanf("%s", emp[i].address);
+                    printf("\tWhat role are you given in the church? ");
+                    scanf("%s", emp[i].role);
+                    printf("\tAre you Male or Female? ");
+                    scanf("%s", emp[i].gender);
+                    printf("\tWhat is your marital status? ");
+                    scanf("%s", emp[i].marital);
+                    printf("\tEnter your email: ");
+                    scanf("%s", emp[i].email);
+                    printf("\tEnter your telephone number: ");
+                    scanf("%s", emp[i].tel);
+                    break;
+
+               case 0:
+                system("cls");
+                goto beginning;
+
+               default:
+                system("cls");
+                printf("Invalid option!!! Try again\n");
+                goto edit;
+               }
+    FILE*h;
+    h = fopen("adding.dat","w+");
+    fwrite(&emp, sizeof(struct employee),80,h);
+    fclose(h);
+
+    goto start;
     }
 return 0;
 }
