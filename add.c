@@ -51,7 +51,7 @@ int main()
 
     int n;beginning:
     //system("cls");
- printf("\t\tSOROTI PENTACOSTAL CHURCH MINISTRY:\n\t\t1. Church information\n\t\t2. Payments & Bills\n\t\t3. Beneficiary claims\n\t\t4. Staff salaries\n\t\t0. exit.\n");
+ printf("\tSOROTI PENTACOSTAL CHURCH MINISTRY:\n\t\t1. Church information\n\t\t2. Payments & Bills\n\t\t3. Beneficiary claims\n\t\t4. Staff salaries\n\t\t0. exit.\n");
   scanf("%d",&n);
   switch(n)
   {
@@ -59,7 +59,7 @@ int main()
   case 1:
       system("CLS");
       int go;
-      printf("Do you want to... \n\t\t1. Add a new member of the congregation? \n\t\t2. View one of the member records\n\t\t3. Delete a member record?\n\t\t4. To go back to the main menu?");
+      printf("Do you want to... \n\t\t1. Add a new member? \n\t\t2. View a member's/members' records\n\t\t3. Delete a member?\n\t\t4. Go back to the main menu?");
       scanf("%d", &go);
       if(go==1){goto add;}
       else if(go==2){system("CLS");goto view;}
