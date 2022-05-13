@@ -165,18 +165,35 @@ int main()
             goto part2;
         }
         part1:
-        for(int i=0; i<80;i++)
+        for(int i=0; i<80;i=i+2)
         {
             if(emp[i].personID==0)
             {
                 printf("That's all");
                 goto beginning;
             }
-            if(emp[i].personID==3000)
+            if (emp[i].personID!=0 && emp[i+1].personID==0)
             {
+
+            }
+            if(emp[i].personID==3000||emp[i+1].personID==3000)
+            {
+                i--;
                 continue;
             }
-            printf("\t\tPerson's ID: %d\n\t\tName: %s %s \n\t\tRole: %s\n\t\tAge: %d\n\t\tGender: %s\n\t\tMarital: %s \n\t\tAddress: %s\n\t\tTelephone Number: %d\n\t\tEmail: %s\n\t\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
+            printf("\n\tPerson's ID: %d              \tPerson's ID: %d "
+                   "\n\tName: %s %s                  \tName: %s %s "
+                   "\n\tRole: %s                     \tRole: %s"
+                   "\n\tAge: %d                      \t\tAge: %d"
+                   "\n\tGender: %s                   \t\tGender: %s"
+                   "\n\tMarital: %s                  \tMarital: %s"
+                   "\n\tAddress: %s                  \tAddress: %s"
+                   "\n\tTelephone Number: %d         \tTelephone Number: %d"
+                   "\n\tEmail: %s                    \tEmail: %s"
+                   "\n\tSalary:                      \t\tSalary: \n\n",
+                   emp[i].personID,emp[i+1].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i+1].name.firstName,emp[i+1].name.secondName,emp[i].role,emp[i+1].role,emp[i].age,emp[i+1].age,emp[i].gender,emp[i+1].gender,emp[i].marital,emp[i+1].marital,emp[i].address,emp[i+1].address,emp[i].tel,emp[i+1].tel,emp[i+1].email,emp[i+1].email,emp[i].salary,emp[i+1].salary);
+
+
 
         }goto start;
         part2:
