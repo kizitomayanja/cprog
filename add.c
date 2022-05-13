@@ -32,7 +32,7 @@ struct employee
     char email[35];
     int salary;
 }emp[80];
-void write(int group);
+int write(int group);
 
 int main()
 {
@@ -96,65 +96,22 @@ int main()
      add:
 {
     //Adding block for employees
-
-    int i;
-
-   // printf("%s\n", emp[0].name.firstName);
-    for(i=0;i<80;i++)
+    int mode;
+    mode = write(role);
+    switch(mode)
     {
-        if(emp[i].personID==0)
-        {
-            printf("The iterator is %d\n", i);
-            break;
-        }
-    }
-    printf("Enter your first Name: ");
-    scanf("%s",emp[i].name.firstName);
-    printf("Enter your second name: ");
-    scanf("%s", emp[i].name.secondName);
-    emp[i].personID=2101000+i+1;
-    printf("Your Id is %d.\n", emp[i].personID);
-    printf("Enter your age: ");
-    scanf("%d", &emp[i].age);
-    printf("Enter your address: ");
-    scanf("%s", emp[i].address);
-    printf("What role are you given in the church? ");
-    scanf("%s", emp[i].role);
-    printf("Are you Male or Female? ");
-    scanf("%s", emp[i].gender);
-    printf("What is your marital status? ");
-    scanf("%s", emp[i].marital);
-    printf("Enter your email: ");
-    scanf("%s", emp[i].email);
-    printf("Enter your telephone number: ");
-    scanf("%s", emp[i].tel);
-    //fclose(ptr);
-    FILE*fp;
-    fp = fopen("adding.dat","w+");
-    fwrite(&emp, sizeof(struct employee),i+1,fp);
-    fclose(fp);
-    //system("cls");
-    int checker;
-    repeat1:
-    printf("\n\n 1. To add another record. \n 2. To return to main menu\n 3. exit the program.");
-    scanf("%d", &checker);
-    if(checker==1)
-    {
-        goto add;
-    }
-    else if(checker==2)
-    {
-        system("CLS");
+    case 0:
         goto beginning;
+
+    case 1:
+        goto add;
+
+    case 2:
+        exit(0);
+
+
     }
-    else if(checker == 3)
-    {
-        exit(1);
-    }
-    else
-    {
-        goto repeat1;
-    }
+
 
 
     view:
@@ -179,7 +136,7 @@ int main()
             }
             if (emp[i].personID!=0 && emp[i+1].personID==0)
             {
-                printf("\tPerson's ID: %d\n\tName: %s %s \n\t\tRole: %s\n\tAge: %d\n\tGender: %s\n\tMarital: %s \n\tAddress: %s\n\tTelephone Number: %d\n\tEmail: %s\n\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
+                printf("\tPerson's ID: %d\n\tName: %s %s \n\tRole: %s\n\tAge: %d\n\tGender: %s\n\tMarital: %s \n\tAddress: %s\n\tTelephone Number: %d\n\tEmail: %s\n\tSalary: \n",emp[i].personID,emp[i].name.firstName,emp[i].name.secondName,emp[i].role,emp[i].age,emp[i].gender,emp[i].marital,emp[i].address,emp[i].tel,emp[i].email,emp[i].salary);
                 printf("\n\n\t That's all\n\n");
                 goto start;
             }
@@ -399,18 +356,74 @@ modify:
 return 0;
 }
 
-void write(int group)
+int write(int group)
 {
     if(group==1)
     {
+    int i;
 
-    }
-    else if(group==2)
+   // printf("%s\n", emp[0].name.firstName);
+    for(i=0;i<80;i++)
     {
-
+        if(emp[i].personID==0)
+        {
+            printf("The iterator is %d\n", i);
+            break;
+        }
+    }
+    printf("Enter your first Name: ");
+    scanf("%s",emp[i].name.firstName);
+    printf("Enter your second name: ");
+    scanf("%s", emp[i].name.secondName);
+    emp[i].personID=2101000+i+1;
+    printf("Your Id is %d.\n", emp[i].personID);
+    printf("Enter your age: ");
+    scanf("%d", &emp[i].age);
+    printf("Enter your address: ");
+    scanf("%s", emp[i].address);
+    printf("What role are you given in the church? ");
+    scanf("%s", emp[i].role);
+    printf("Are you Male or Female? ");
+    scanf("%s", emp[i].gender);
+    printf("What is your marital status? ");
+    scanf("%s", emp[i].marital);
+    printf("Enter your email: ");
+    scanf("%s", emp[i].email);
+    printf("Enter your telephone number: ");
+    scanf("%s", emp[i].tel);
+    //fclose(ptr);
+    FILE*fp;
+    fp = fopen("adding.dat","w+");
+    fwrite(&emp, sizeof(struct employee),i+1,fp);
+    fclose(fp);
+    //system("cls");
+    int checker;
+    repeat1:
+    printf("\n\n\t 1. To add another record. \n\t 2. To return to main menu\n\t 3. exit the program.");
+    scanf("%d", &checker);
+    if(checker==1)
+    {
+        system("cls");
+        return 1;
+    }
+    else if(checker==2)
+    {
+        system("CLS");
+        return 0;
+       // goto beginning;
+    }
+    else if(checker == 3)
+    {
+        return 2;
     }
     else
     {
-        return;
+        system("cls");
+        printf("\tInvalid Option!!! Try again\n");
+        goto repeat1;
     }
+
+    }
+        return 0;
+
 }
