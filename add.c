@@ -41,14 +41,26 @@ int main()
     {
         emp[i].personID = 0;
     }
+    for(int i=0;i<250;i++)
+    {
+        cong[i].personID=0;
+    }
     FILE*ptr;
     if(ptr==NULL)
     {
         goto beginning;
     }
     ptr=fopen("adding.dat","r");
-    fread(&emp,sizeof(struct employee),40,ptr);
+    fread(&emp,sizeof(struct employee),80,ptr);
     fclose(ptr);
+    FILE*yes;
+    if(yes==NULL)
+    {
+        goto beginning;
+    }
+    yes=fopen("congregation.dat","r");
+    fread(&cong,sizeof(struct congregation),250,yes);
+    fclose(yes);
 
     int n;int role;beginning:
     //system("cls");
@@ -59,12 +71,12 @@ int main()
     add1:
   case 1:
       system("CLS");
-      printf("Are you checking...\n\t1. Congregation\n\t2.Staff\nPress 0 to return to main menu.");
+      printf("Are you checking...\n\t1. Staff\n\t2.Congregation\nPress 0 to return to main menu.");
       scanf("%d", &role);
       if(role==0){goto beginning;}
       if(role!=1&&role!=2)
       {
-          system("cls");
+          //system("cls");
           //printf("Invalid option\n");
           goto add1;
       }
@@ -422,8 +434,75 @@ int write(int group)
         printf("\tInvalid Option!!! Try again\n");
         goto repeat1;
     }
+    }
+    else if(group==2)
+    {
+
+    int i;
+
+   // printf("%s\n", emp[0].name.firstName);
+    for(i=0;i<80;i++)
+    {
+        if(cong[i].personID==0)
+        {
+            printf("The iterator is %d\n", i);
+            break;
+        }
+    }
+    printf("Enter your first Name: ");
+    scanf("%s",cong[i].name.firstName);
+    printf("Enter your second name: ");
+    scanf("%s", cong[i].name.secondName);
+    cong[i].personID=5454000+i+1;
+    printf("Your Id is %d.\n", cong[i].personID);
+    printf("Enter your age: ");
+    scanf("%d", &cong[i].age);
+    printf("Enter your address: ");
+    scanf("%s", cong[i].address);
+    //printf("What role are you given in the church? ");
+    //scanf("%s", emp[i].role);
+    printf("Are you Male or Female? ");
+    scanf("%s", cong[i].gender);
+    printf("What is your marital status? ");
+    scanf("%s", cong[i].marital);
+    printf("Enter your email: ");
+    scanf("%s", cong[i].email);
+    printf("Enter your telephone number: ");
+    scanf("%s", cong[i].tel);
+    //fclose(ptr);
+    FILE*ty;
+    ty = fopen("congregation.dat","w+");
+    fwrite(&cong, sizeof(struct congregation),i+1,ty);
+    fclose(ty);
+    //system("cls");
+    int checker;
+    repeat2:
+    printf("\n\n\t 1. To add another record. \n\t 2. To return to main menu\n\t 3. exit the program.");
+    scanf("%d", &checker);
+    if(checker==1)
+    {
+        system("cls");
+        return 1;
+    }
+    else if(checker==2)
+    {
+        system("CLS");
+        return 0;
+       // goto beginning;
+    }
+    else if(checker == 3)
+    {
+        return 2;
+    }
+    else
+    {
+        system("cls");
+        printf("\tInvalid Option!!! Try again\n");
+        goto repeat2;
+    }
 
     }
+
         return 0;
 
 }
