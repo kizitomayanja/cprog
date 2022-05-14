@@ -6,3 +6,5 @@
 	 Money left in account: 5960000
 60000 shillings was paid to electricity.
 	 Money left in account: 5900000
+50000 shillings was paid to electricity.
+	 Money left in account: 5850000

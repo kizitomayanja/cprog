@@ -648,7 +648,8 @@ payments:
             switch(choice)
             {
             case 1://utilities
-                printf("\nAre you paying for... \n\t1.Electricity \n\t2.Water");
+
+                printf("\nAre you paying for... \n\t1. Electricity \n\t2. Water\n\t3. Back\n\t4. Go back to main menu.");
                 int util;
                 scanf("%d",&util);
                 if(util==1)
@@ -665,8 +666,13 @@ payments:
                     don=fopen("accountinformation.dat","w+");
                     fwrite(&account,sizeof(struct Account),1,don);
                     fclose(don);
-                    goto payments;
-                }
+                    int check;
+                    printf("\n\t1.Return to the main previous menu\n\t2. Return to the main menu");
+
+                    }
+
+                    //goto payments;
+
                 else if(util==2)
                 {
                     printf("How much are you paying for water?\n");
@@ -774,7 +780,21 @@ payments:
             }
 
                 }
-               }
+
+        case 3:
+        {
+            goto payments;
+        }
+        case 0:
+        {
+            goto beginning;
+        }
+        default:
+            {
+                system("cls");
+                printf("Invalid Choice\n\a");
+                goto payments;
+            }
 
         }
 
@@ -919,7 +939,7 @@ int write(int group)
 
 
 
-
+}
 
     //dealing with the second part of the code.
 
