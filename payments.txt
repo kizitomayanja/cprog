@@ -1,0 +1,8 @@
+40000 shillings was paid to electricity.
+	 Money left in account: 5960000
+50000 shillings was paid to water.
+	 Money left in account: 5950000
+40000 shillings was paid to electricity.
+	 Money left in account: 5960000
+60000 shillings was paid to electricity.
+	 Money left in account: 5900000
