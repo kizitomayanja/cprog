@@ -1,0 +1,77 @@
+[33mcommit 20a72537d9cb0bbb9af2c1dbb6be846061f48abf[m[33m ([m[1;36mHEAD -> [m[1;32mfunctions[m[33m)[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 17:16:15 2022 +0300
+
+    committed
+
+[33mcommit b79742c58b7f5553608f9272a184c477d33c564e[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 16:03:01 2022 +0300
+
+    another useless commit
+
+[33mcommit ddd197c98c487d09a6d1d0316013dc852a95d12a[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 15:57:09 2022 +0300
+
+    don't mind this commit, just switching branches
+
+[33mcommit 954d0089de6db367cd1ae8c1d7b4430c23aac2a1[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 15:55:22 2022 +0300
+
+    Having trouble with this crap. None of the two functions works now and yet they were working earlier. Compiler does not see an issue with the code, but it won't stop spewing garbage. Benji, personally calling to you for help on this one. It will be a great help. Hopefully, I'll be able to deal with it in the night when I have a fresh mind.
+
+[33mcommit 0547f4d93501b50f7015b6be4a82778111dba7e9[m[33m ([m[1;31mcprog/functions[m[33m)[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 12:38:45 2022 +0300
+
+    fighting with view function now... Write function complete.
+
+[33mcommit f66061286b564f9b5c659726e20172a095fae482[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 12:06:30 2022 +0300
+
+    Made writing file function... Still debugging
+
+[33mcommit d907a3425b3028508b5e1f036141fd84db89f9ee[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 11:24:55 2022 +0300
+
+    some changes
+
+[33mcommit 3af948c01359ac446eca93b4c398c5dae87ec4a3[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 11:16:05 2022 +0300
+
+    Working on functions that handle writing information to both structures... Trying to reduce lines of code.
+
+[33mcommit f3e058447bc4ef06624321399bd9bcea58a0985c[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Fri May 13 08:24:01 2022 +0300
+
+    Editing
+
+[33mcommit f9756f72d3e39e9a594c6d455eb09490c9162b7c[m[33m ([m[1;31mcprog/master[m[33m)[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Thu May 12 22:45:36 2022 +0300
+
+    trying to make it work
+
+[33mcommit c3fa903ac434e399bca024ff72007534a5a08917[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Thu May 12 22:42:37 2022 +0300
+
+    needed this
+
+[33mcommit 16182220e612727295c1c6c137c622a25eab50ce[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Thu May 12 22:25:58 2022 +0300
+
+    Editing
+
+[33mcommit a4c7d6b8f04f22aaa60f22b356f4bda3284b9478[m
+Author: Kizito Najib <kizitomayanja25@gmail.com>
+Date:   Thu May 12 11:19:56 2022 +0300
+
+    First commit
