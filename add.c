@@ -82,6 +82,7 @@ int main()
     int u;
 
     beginning://system("cls");
+        system("cls");
  printf("\tSOROTI PENTACOSTAL CHURCH MINISTRY:\n\t\t1. Church information\n\t\t2. Payments & Bills\n\t\t3. Beneficiary claims\n\t\t4. Staff salaries\n\t\t0. exit.\n");
   int n;int role;
   scanf("%d",&n);
@@ -637,30 +638,36 @@ return 0;
 //writing the code for payments...
 payments:
     {
+        system("cls");
         int choice;
-        printf("\t1. Payments.\n\t2. Offerings\n\t3. Go back to previous menu.\n\t0. Go back to main menu");
+        printf("\t1. Payments.\n\t2. Offerings\n\t3. Go back to previous menu.\n");
         scanf("%d", &choice);
         switch(choice)
         {
         case 1:
-            printf("\n\t1.Utilities \n\t2. Others.\n\t3.Back\n\t4.Go back to main menu.");
+            uti:
+            system("cls");
+            printf("\n\t1. Utilities \n\t2. Others.\n\t3.Back\n\t4. Go back to main menu.");
             scanf("%d", &choice);
+            system("cls");
             switch(choice)
             {
             case 1://utilities
-
+                ut:
                 printf("\nAre you paying for... \n\t1. Electricity \n\t2. Water\n\t3. Back\n\t4. Go back to main menu.");
                 int util;
                 scanf("%d",&util);
-                if(util==1)
+                //system("cls");
+                if(util==1)//paying for electricity
                 {
+                    system("cls");
                     printf("How much are you paying for electricity?\n");
                     scanf("%d",&util);
                     account.accountbalance=account.accountbalance - util;
                     FILE*elec;
                     elec = fopen("payments.txt","a+");
                     fprintf(elec,"\n%d shillings was paid to electricity.\n\t Money left in account: %d",util,account.accountbalance);
-                    printf("Electricity bill has been paid successfully");
+                    printf("Electricity bill has been paid successfully\n");
                     fclose(elec);
                     FILE*don;
                     don=fopen("accountinformation.dat","w+");
@@ -668,6 +675,21 @@ payments:
                     fclose(don);
                     int check;
                     printf("\n\t1.Return to the main previous menu\n\t2. Return to the main menu");
+                    do
+                    {
+                        scanf("%d",&check);
+                        if(check==1)
+                    {
+                        system("cls");
+                        goto ut;
+                    }if(check==2)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+                    printf("\a Invalid choice. Try again.\n\t1.Return to the main previous menu\n\t2. Return to the main menu");
+                    }while(check!=1||check!=2);
+
 
                     }
 
@@ -675,6 +697,7 @@ payments:
 
                 else if(util==2)
                 {
+                    system("cls");
                     printf("How much are you paying for water?\n");
                     scanf("%d",&util);
                     account.accountbalance=account.accountbalance - util;
@@ -687,31 +710,85 @@ payments:
                     yon=fopen("accountinformation.dat","w+");
                     fwrite(&account,sizeof(struct Account),1,yon);
                     fclose(yon);
-                    goto payments;
+                    int check;
+                    printf("\n\t1.Return to the main previous menu\n\t2. Return to the main menu");
+                    do
+                    {
+                        scanf("%d",&check);
+                        if(check==1)
+                    {
+                        system("cls");
+                        goto ut;
+                    }if(check==2)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+                    system("cls");
+                    printf("\a Invalid choice. Try again.\n\t1.Return to the main previous menu\n\t2. Return to the main menu");
+                    }while(check!=1||check!=2);
                 }
-                else{goto payments;}
+
+                else if(util==3)
+                    {
+                        system("cls");
+                        goto uti;
+                    }
+                else if(util==4)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+
+                else{system("cls");printf("Invalid option. Try again!!!\n\n");goto ut;}
 
             case 2://working on others... Utilities.
                 {
-                  printf("What are you paying for?");
+                    system("cls");
+                  printf("What are you paying for? ");
                     char item[30];
                     scanf("%s",item);
-                    printf("How much are you paying for %s", item);
+                    printf("How much are you paying for %s? ", item);
                     scanf("%d",&util);
                     account.accountbalance=account.accountbalance - util;
                     FILE*oth;
                     oth = fopen("payments.txt","a+");
                     fprintf(oth,"%d shillings was paid for %s.\n\t Money left in account: %d",util,item,account.accountbalance);
-                    printf("%s has been paid successfully",item);
+                    printf("\n\t%s has been paid successfully \n",item);
                     fclose(oth);
                     FILE*fon;
                     fon=fopen("accountinformation.dat","w+");
                     fwrite(&account,sizeof(struct Account),1,fon);
                     fclose(fon);
-                    goto payments;
+                    int check;
+                    printf("\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    do
+                    {
+                        scanf("%d",&check);
+                        if(check==1)
+                    {
+                        system("cls");
+                        goto payments;
+                    }if(check==2)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+                    system("cls");
+                    printf("\a Invalid choice. Try again.\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    }while(check!=1||check!=2);
                 }
-            case 0:
+            case 3:
+                goto payments;
+            case 4:
                 goto beginning;
+            default:
+                {
+                system("cls");
+                printf("Invalid choice. Try again!!!\n");
+                goto uti;
+                }
+
 
 
             //default:
@@ -719,16 +796,16 @@ payments:
            // default:
 
             }
-        case 2:
+        case 2://second case under payments
             {
-                printf("\t1.Offertory/Thanksgiving\n\t2.Tithe\n\t3.Back\n\t0.Go back to main menu.");
-               scanf("%d", &choice);
-              printf("Offerings.\n\t1. Offertory\n\t2.Tithe");
-                int offer,offertory;
-                scanf("%d",&offer);
-                tithe:
+                int offer;
+                system("cls");
+                printf("\t1.Offertory/Thanksgiving\n\t2.Tithe\n\t3.Back\n\t4.Go back to main menu.");
+                scanf("%d", &offer);
+                int offertory;
                 if(offer==1)//option for paying offertory
                 {
+                    system("cls");
                     printf("How much has been collected from offertory? ");
                     scanf("%d",&offertory);
                     account.accountbalance=account.accountbalance + offertory;
@@ -742,7 +819,7 @@ payments:
                     fwrite(&account,sizeof(struct Account),1,ton);
                     fclose(ton);
                     goto payments;
-                }
+                }tithe:
                 if(offer==2)//option for paying tithe
                 {
                     printf("Enter the ID of the member paying tithe: ");
@@ -751,48 +828,57 @@ payments:
                     printf("How much was paid by member in tithe?");
                     scanf("%d", &money);
                     for(int i=0; i<80;i++)
-        {
-            if(newid == cong[i].personID)
+                {
+                if(newid == cong[i].personID)
+                {
+                    system("cls");
+                    printf("\t\t\t%s %s has paid %d in tithe.",cong[i].name.firstName,cong[i].name.secondName,money);
+                    break;
+                }
+                else if(cong[i].personID==0)
+                {
+                    system("cls");
+                    printf("ID does not exist!!! Try again incase there was a typo.\n");
+                    goto tithe;
+                }
+                }
+                account.accountbalance=account.accountbalance+money;
+                FILE*thes;
+                thes = fopen("payments.txt","a+");
+                fprintf(thes,"%d shillings were received from offertory.\n\t Money left in account: %d",offertory,account.accountbalance);
+                printf("%s has been recorded successfully",offertory);
+                fclose(thes);
+                FILE*won;
+                won=fopen("accountinformation.dat","w+");
+                fwrite(&account,sizeof(struct Account),1,won);
+                fclose(won);
+
+
+            }
+            if(offer==3)
             {
                 system("cls");
-                printf("\t\t\t%s %s has paid %d in tithe.",cong[i].name.firstName,cong[i].name.secondName,money);
-                break;
+                goto payments;
             }
-            else if(cong[i].personID==0)
+            if(offer==4)
             {
                 system("cls");
-                printf("ID does not exist!!! Try again incase there was a typo.\n");
-                goto tithe;
-                break;
+                goto beginning;
             }
-            account.accountbalance=account.accountbalance+money;
-            FILE*thes;
-                    thes = fopen("payments.txt","a+");
-                    fprintf(thes,"%d shillings were received from offertory.\n\t Money left in account: %d",offertory,account.accountbalance);
-                    printf("%s has been recorded successfully",offertory);
-                    fclose(thes);
-                    FILE*won;
-                    won=fopen("accountinformation.dat","w+");
-                    fwrite(&account,sizeof(struct Account),1,won);
-                    fclose(won);
-                    goto payments;
-        }
-            }
+
 
                 }
 
-        case 3:
+        case 3://third case under payments
         {
-            goto payments;
-        }
-        case 0:
-        {
+            system("cls");
             goto beginning;
         }
+
         default:
             {
                 system("cls");
-                printf("Invalid Choice\n\a");
+                printf("Invalid Choice. Try again!\n\a");
                 goto payments;
             }
 
