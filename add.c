@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
+const int church = 1234;
 struct Name
     {
         char firstName[20];
@@ -39,21 +40,19 @@ struct Account
 }account;
 
 int write(int group);
-
+int passw(int pin);
 int main()
 {
+      char campaign[30];
     account.accountbalance = 6000000;
     FILE*acc;
     acc=fopen("accountinformation.dat","r");
-    if(acc==NULL)
+   /* if(acc==NULL)
     {
         printf("File does not exist.");
-    }
-    else
-    {
+    }*/
         fread(&account,sizeof(struct Account),1,acc);
         fclose(acc);
-    }
   //  int treasury = 5000000;
     for(int i=0;i<80;i++)
     {
@@ -116,9 +115,9 @@ int main()
    case 2:
         goto payments;
    case 3:
-
+        goto beneficiary;
    case 4:
-
+        goto salaries;
    case 0:
        exit(0);
        default:
@@ -703,7 +702,7 @@ payments:
                     account.accountbalance=account.accountbalance - util;
                     FILE*wat;
                     wat = fopen("payments.txt","a+");
-                    fprintf(wat,"%d shillings was paid to water.\n\t Money left in account: %d",util,account.accountbalance);
+                    fprintf(wat,"\n%d shillings was paid to water.\n\t Money left in account: %d",util,account.accountbalance);
                     printf("Water bill has been paid successfully");
                     fclose(wat);
                     FILE*yon;
@@ -753,7 +752,7 @@ payments:
                     account.accountbalance=account.accountbalance - util;
                     FILE*oth;
                     oth = fopen("payments.txt","a+");
-                    fprintf(oth,"%d shillings was paid for %s.\n\t Money left in account: %d",util,item,account.accountbalance);
+                    fprintf(oth,"\n\t%d shillings was paid for %s.\n\t Money left in account: %d",util,item,account.accountbalance);
                     printf("\n\t%s has been paid successfully \n",item);
                     fclose(oth);
                     FILE*fon;
@@ -811,14 +810,31 @@ payments:
                     account.accountbalance=account.accountbalance + offertory;
                     FILE*off;
                     off = fopen("payments.txt","a+");
-                    fprintf(off,"%d shillings were received from offertory.\n\t Money left in account: %d",offertory,account.accountbalance);
-                    printf("%s has been recorded successfully",offertory);
+                    fprintf(off,"\n\t%d shillings were received from offertory.\n\t Money left in account: %d",offertory,account.accountbalance);
+                    printf("%d has been recorded successfully",offertory);
                     fclose(off);
                     FILE*ton;
                     ton=fopen("accountinformation.dat","w+");
                     fwrite(&account,sizeof(struct Account),1,ton);
                     fclose(ton);
-                    goto payments;
+                    //goto payments;
+                    int ye;
+                    printf("\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    do
+                    {
+                        scanf("%d",&ye);
+                        if(ye==1)
+                    {
+                        system("cls");
+                        goto payments;
+                    }else if(ye==2)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+                    system("cls");
+                    printf("\a Invalid choice. Try again.\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    }while(ye!=1||ye!=2);
                 }tithe:
                 if(offer==2)//option for paying tithe
                 {
@@ -832,7 +848,7 @@ payments:
                 if(newid == cong[i].personID)
                 {
                     system("cls");
-                    printf("\t\t\t%s %s has paid %d in tithe.",cong[i].name.firstName,cong[i].name.secondName,money);
+                    printf("\t\t\t%s %s has paid %d in tithe.\n",cong[i].name.firstName,cong[i].name.secondName,money);
                     break;
                 }
                 else if(cong[i].personID==0)
@@ -845,15 +861,30 @@ payments:
                 account.accountbalance=account.accountbalance+money;
                 FILE*thes;
                 thes = fopen("payments.txt","a+");
-                fprintf(thes,"%d shillings were received from offertory.\n\t Money left in account: %d",offertory,account.accountbalance);
-                printf("%s has been recorded successfully",offertory);
+                fprintf(thes,"\n\t%d shillings were received from offertory.\n\t Money left in account: %d",money,account.accountbalance);
+                printf("%d has been recorded successfully",money);
                 fclose(thes);
                 FILE*won;
                 won=fopen("accountinformation.dat","w+");
                 fwrite(&account,sizeof(struct Account),1,won);
                 fclose(won);
-
-
+                int che;
+                    printf("\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    do
+                    {
+                        scanf("%d",&che);
+                        if(che==1)
+                    {
+                        system("cls");
+                        goto payments;
+                    }if(che==2)
+                    {
+                        system("cls");
+                        goto beginning;
+                    }
+                    system("cls");
+                    printf("\a Invalid choice. Try again.\n\t1.Return to the payments menu to make another payment\n\t2. Return to the main menu");
+                    }while(che!=1||che!=2);
             }
             if(offer==3)
             {
@@ -886,7 +917,83 @@ payments:
 
 
     }
+beneficiary:
+    {
+        printf("Enter the name of the campaign.");
+        fflush(stdin);
+        gets(campaign);
+
+        printf("%s", campaign);
+        int churchcontr, contr, total, benefits;
+
+        printf("Enter the amount of money contributed by the church.");
+        scanf("%d", &churchcontr);
+        account.accountbalance=account.accountbalance-churchcontr;
+        printf("Enter the amount collected from contributions.");
+        scanf("%d", &contr);
+        total = (0.7*churchcontr) + contr;
+        system("cls");
+        printf("\t\t%s\nAmount contributed by the church: %d\nAmount contributed by the congregation: %d\nAmount donated at the end of the campaign: %d", campaign,churchcontr,contr,total);
+
+
+
+    }
+    salaries:
+        {
+            printf("Enter the ID of the staff member to be paid");int testid;
+            scanf("%d", &testid);
+        for(int i=0; i<80;i++)
+        {
+            if(testid == emp[i].personID)
+            {
+                int pay;int password;int respond;
+                system("cls");
+                printf("\t How much is %s going to be paid?", emp[i].name.firstName);
+                scanf("%d", &pay);
+                printf("Enter the password to the account: ");
+                scanf("%d", &password);
+                respond = passw(password);
+                if(respond==0)
+                {
+                    system("cls");
+                    printf("Wrong password");
+                    goto beginning;
+                }
+                else if(respond == 1)
+                {
+                    account.accountbalance=account.accountbalance-pay;
+                    emp[i].salary=emp[i].salary+pay;
+                    FILE*pie;
+                    pie = fopen("payments.txt","w+");
+                    fprintf(pie,"\n %s has been paid %d shillings this month", emp[i].name.firstName,pay);
+                    fclose(pie);
+                    FILE*joke;
+                    joke = fopen("accountinformation.dat","w+");
+                    fwrite(&account,sizeof(struct Account),1,joke);
+                    fclose(joke);
+                    FILE*sal;
+                    sal=fopen("adding.dat","w+");
+                    fwrite(&emp,sizeof(struct employee), 80, sal);
+                    fclose(sal);
+                    printf("%s has been paid successfully.", emp[i].name.firstName);
+                    goto beginning;
+                }
+
+
+            }
+            else if(emp[i].personID==0)
+            {
+                system("cls");
+                printf("ID does not exist!!! Try again incase there was a typo.\n");
+                goto salaries;
+                break;
+            }
+        }
+        }
+
+    return 0;
 }
+
 
 int write(int group)
 {
@@ -1028,6 +1135,22 @@ return 0;
 }
 
     //dealing with the second part of the code.
+int passw(int pin)
+{
+    int i;
+    for(i=0;i<3;i++)
+    {
+        if(pin == church)
+        {
+            printf("Correct Pin!!!\n\n");
+            return 1;
+        }
+        else if(i<3)
+        {
+            printf("Incorrect PIN. Try again. You have %d tries remaining.", 2-i);
+        }
+    }
+    printf("\nIncorrect PIN three times.");
+    return 0;
 
-
-
+}
