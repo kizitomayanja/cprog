@@ -64,19 +64,19 @@ int main()
         cong[i].personID=0;
     }
     FILE*ptr;
-    if(ptr==NULL)
+    /*if(ptr==NULL)
     {
         goto beginning;
-    }
-    ptr=fopen("adding.dat","r");
+    }*/
+    ptr=fopen("adding.dat","r+");
     fread(&emp,sizeof(struct employee),80,ptr);
     fclose(ptr);
     FILE*yes;
-    if(yes==NULL)
+    /*if(yes==NULL)
     {
         goto beginning;
-    }
-    yes=fopen("congregation.dat","r");
+    }*/
+    yes=fopen("congregation.dat","r+");
     fread(&cong,sizeof(struct congregation),250,yes);
     fclose(yes);
     int u;
@@ -886,7 +886,7 @@ payments:
 
 
     }
-
+}
 
 int write(int group)
 {
@@ -1024,12 +1024,10 @@ int write(int group)
     }
 
 
-
+return 0;
 }
 
     //dealing with the second part of the code.
 
-        return 0;
 
-}
 
